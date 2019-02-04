@@ -1,2 +1,2 @@
 # face_generator_GAN
-Implementacija GAN-a za generisanje lica, uz pomoc keras biblioteke. Skup podataka nad kojim je mreza trenirana nalazi se [ovde] (https://www.kaggle.com/jessicali9530/celeba-dataset).
+Implementacija GAN-a za generisanje lica, uz pomoc keras biblioteke. Skup podataka nad kojim je mreza trenirana nalazi se [ovde](https://www.kaggle.com/jessicali9530/celeba-dataset).
