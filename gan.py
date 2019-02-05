@@ -142,14 +142,16 @@ class GAN():
         n_iterations=math.floor(len(filepaths)/batch_size)
         print(n_iterations)
         for epoch in range(epochs):
-            # ---------------------
-            #  DISKRIMINATOR
-            # ---------------------
-            
-            # random odaberemo polovinu slika
+
             for ite in range(n_iterations):
+		# ---------------------
+		#  DISKRIMINATOR
+		# ---------------------
+		    
+		# random odaberemo polovinu slika
                 X_train = self.get_batch(glob(os.path.join(data_dir, '*.jpg'))[ite*batch_size:(ite+1)*batch_size], 64, 64, 'RGB')
                 X_train = (X_train.astype(np.float32) - 127.5) / 127.5
+		# brze konvergira kada se doda sum
                 X_train=np.array([self.add_noise(image) for image in X_train])
                 print(X_train.shape[0])
                 idx = np.random.randint(0, X_train.shape[0], half_batch)
@@ -167,7 +169,7 @@ class GAN():
                 # ---------------------
                 noise = np.random.normal(0, 1, (batch_size, 4096))
 
-                # generator zeli da diskriminator zabelezi koje su generisane slike klasifikovane kao prave
+                # generator zeli da diskriminator kategorise generisane slike kao prave
                 valid_y = np.array([1] * batch_size)
 
                 g_loss = self.combined.train_on_batch(noise, valid_y)
